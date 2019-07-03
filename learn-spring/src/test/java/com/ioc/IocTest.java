@@ -13,4 +13,5 @@ public class IocTest {
 		System.out.println(context.getBean(CityService.class));
 
 	}
+
 }
