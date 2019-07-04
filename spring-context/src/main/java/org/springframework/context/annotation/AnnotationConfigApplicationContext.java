@@ -89,7 +89,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
 		//调用默认的构造方法
 		this();
-		//貌似是注册beanDefinition
+		//根据注解解析类，并转换为beanDefinition
 		register(annotatedClasses);
 		//刷新spring bean 容器
 		refresh();
@@ -164,6 +164,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 */
 	public void register(Class<?>... annotatedClasses) {
 		Assert.notEmpty(annotatedClasses, "At least one annotated class must be specified");
+		//annotation reader 解析 被注解注释的class
 		this.reader.register(annotatedClasses);
 	}
 
